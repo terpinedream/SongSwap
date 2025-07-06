@@ -78,7 +78,7 @@ def profile():
 
     r = requests.get(f"{SPOTIFY_API_BASE_URL}/me/playlists", headers=headers)
     playlists = r.json()
-    return render_template('profile.html', playlists=playlists)
+    return render_template('profile.html', playlists=playlists.get ("items", []))
 
 def get_playlist_tracks(access_token, playlist_id):
     headers = {

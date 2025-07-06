@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Playlists — Song Swap</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: white;
+      margin: 2rem;
+    }
+    h1 {
+      color: #1DB954;
+      margin-bottom: 1rem;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background: #282828;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    a {
+      color: #1DB954;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Playlists</h1>
+  {% if playlists.items %}
+    <ul>
+      {% for playlist in playlists.items %}
+        <li>
+          <strong>{{ playlist.name }}</strong><br />
+          Tracks: {{ playlist.tracks.total }}<br />
+          <a href="{{ playlist.external_urls.spotify }}" target="_blank">Open in Spotify</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No playlists found.</p>
+  {% endif %}
+</body>
+</html>
+
